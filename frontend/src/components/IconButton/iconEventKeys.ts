@@ -1,0 +1,32 @@
+const iconEventKeys = {
+    play: () => 'audi-source-play-or-pause',
+    pause: () => 'audi-source-play-or-pause',
+    stop: () => 'audi-source-stop',
+    skipNext: () => 'audi-skip-next',
+    skipPrev: () => 'audi-skip-prev',
+    fastForward: () => 'audi-fast-forward',
+    fastRewind: () => 'audi-fast-rewind',
+    repeat: () => 'audi-source-repeat',
+    record: () => '',
+    record_on: () => '',
+    user: () =>'',
+    menu: () => '',
+    listAdd: () => '',
+    zoomIn: () => '',
+    zoomOut: () => '',
+    headset: () => '',
+    save: () => '',
+    upload: () => '',
+    cursor: () => '',
+    copy: () => '',
+    paste: () => '',
+    cut: () => '',
+    delete: () => '',
+    redo: () => '',
+    undo: () => '',
+    blade: () => '',
+    link: () => '',
+  }
+  
+  export default iconEventKeys;
+  

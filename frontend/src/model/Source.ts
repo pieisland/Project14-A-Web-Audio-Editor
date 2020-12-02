@@ -8,6 +8,8 @@ class Source{
     public channelData: Float32Array[];
     public fileSize: number;
 
+    public audioBuffer:AudioBuffer;
+
     constructor(file: File, audioBuffer: AudioBuffer){
         this.id = 0;
         this.fileName = file.name;
@@ -18,6 +20,10 @@ class Source{
         this.numberOfChannels = audioBuffer.numberOfChannels;
         this.channelData = [];
         
+        //이걸 저장해야 만들 수 있거든요.
+        this.audioBuffer = audioBuffer;
+        console.log(this.audioBuffer, '오디오 버퍼 정보');
+
         this.setChannelData(audioBuffer);
     }
 
