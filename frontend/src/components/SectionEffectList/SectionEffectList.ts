@@ -1,11 +1,13 @@
 import { ModalType, EventType, EventKeyType, EffectList, IconType } from '@types';
 import { Controller } from '@controllers';
 import { EventUtil } from '@util';
+import { Effect } from '@model';
+import { EffectContentType } from '@types';
 import './SectionEffectList.scss';
 
 (() => {
   const SectionEffectList = class extends HTMLElement {
-    private effectList: EffectList[];
+    private effectList: Effect[];
 
     constructor() {
       super();
@@ -22,6 +24,13 @@ import './SectionEffectList.scss';
         eventTypes: [EventType.click],
         eventKey: EventKeyType.EFFECT_LIST_OPEN_MODAL_BTN_CLICK,
         listeners: [this.openEffectListModalBtnClickListener],
+        bindObj: this
+      });
+
+      EventUtil.registerEventToRoot({
+        eventTypes: [EventType.click],
+        eventKey: EventKeyType.EFFECT_DELETE_BTN_CLICK,
+        listeners: [this.effectDeleteBtnClickListener],
         bindObj: this
       });
     }
@@ -52,7 +61,7 @@ import './SectionEffectList.scss';
           <li class="effect-container">
             <div class="effect"> 
               <div>${effect.name}</div>
-              <audi-icon-button icontype=${IconType.delete}></audi-icon-button> 
+              <audi-icon-button icontype=${IconType.delete} class="delegation" event-key=${EventKeyType.EFFECT_DELETE_BTN_CLICK}></audi-icon-button> 
             </div>
           </li>
         `),
@@ -64,7 +73,12 @@ import './SectionEffectList.scss';
       Controller.changeModalState(ModalType.effect, false);
     }
 
-    updateEffectList(newEffect: EffectList): void {
+    //effect의 id 등을 알아야 할텐데..?
+    effectDeleteBtnClickListener(): void {
+      console.log('delete effect');
+    }
+
+    updateEffectList(newEffect: Effect): void {
       this.effectList = [...this.effectList, newEffect];
       this.render();
     }
